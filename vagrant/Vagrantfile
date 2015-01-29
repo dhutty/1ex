@@ -1,0 +1,55 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Enable ssh agent forwarding, so we can reach private git repos
+  # from vagrant ssh commands (if your local ssh-agent holds the key)
+  config.ssh.forward_agent = true
+  # You'll want the following to add the privatekeys to your ssh-agent
+  # ssh-add .vagrant/machines/*/virtualbox/*key
+  config.ssh.private_key_path =[]
+  (1..3).each do |i|
+    filename = ".vagrant/machines/vagrant#{i}/virtualbox/private_key"
+    File.exist?(filename) && config.ssh.private_key_path.push(filename)
+  end
+  config.ssh.private_key_path.length > 0 || config.ssh.private_key_path = nil
+
+  config.vm.box = "ubuntu/precise32"
+  config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = false
+  #
+    # Customize the amount of memory on the VM:
+    vb.memory = "512"
+  end
+  config.vm.define "vagrant1" do |vagrant1|
+    #vagrant1.vm.box = "ubuntu/precise32"
+    vagrant1.vm.network "forwarded_port", guest: 80, host: 4080
+    vagrant1.vm.network "forwarded_port", guest: 443, host: 4443
+     vagrant1.vm.provision "ansible" do |ansible|
+       ansible.playbook = "../playbook.yml"
+       ansible.sudo = true
+     end
+  end
+  config.vm.define "vagrant2" do |vagrant2|
+    #vagrant2.vm.box = "ubuntu/precise32"
+    vagrant2.vm.network "forwarded_port", guest: 80, host: 4081
+    vagrant2.vm.network "forwarded_port", guest: 443, host: 4444
+     vagrant2.vm.provision "ansible" do |ansible|
+       ansible.playbook = "../playbook.yml"
+       ansible.sudo = true
+     end
+  end
+  config.vm.define "vagrant3" do |vagrant3|
+    #vagrant3.vm.box = "ubuntu/precise32"
+    vagrant3.vm.network "forwarded_port", guest: 80, host: 4082
+    vagrant3.vm.network "forwarded_port", guest: 443, host: 4445
+    vagrant3.vm.provision "ansible" do |ansible|
+      # ansible.limit = 'all' # for parallelizing ansible: vagrant provision vagrant3
+      ansible.playbook = "../playbook.yml"
+      ansible.sudo = true
+    end
+  end
+end

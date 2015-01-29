@@ -15,3 +15,6 @@ scripts for helping deal with databases.
 
 ## testing
 
+## vagrant
+
+Some example Vagrantfiles
