@@ -26,12 +26,12 @@ SUMMARY="one line summary"
 
 
 set -o nounset  # error on referencing an undefined variable
-set -o errexit  # exit on command or pipeline returns non-true
-set -o pipefail # exit if *any* command in a pipeline fails, not just the last
+#set -o errexit  # exit on command or pipeline returns non-true
+#set -o pipefail # exit if *any* command in a pipeline fails, not just the last
 
 VERSION="0.1.0"
-PROGNAME=$( /bin/basename $0 )
-PROGPATH=$( /usr/bin/dirname $0 )
+PROGNAME=$( basename $0 )
+PROGPATH=$( dirname $0 )
 
 # Import library functions
 #. $PROGPATH/utils.sh
@@ -60,19 +60,14 @@ verbosity=0
 while getopts "fhvV" OPTION;
 do
   case "$OPTION" in
-    f) force=1
-       ;;
+    f) force=1 ;;
     h) print_help
-       exit 0
-       ;;
-    v) verbosity=$(($verbosity+1))
-       ;;
+       exit 0 ;;
+    v) verbosity=$(($verbosity+1)) ;;
     V) echo "${VERSION}"
-       exit 0
-       ;;
+       exit 0 ;;
     *) echo "Unrecognised Option: ${OPTARG}"
-       exit 1
-       ;;
+       exit 1 ;;
   esac
 done
 
