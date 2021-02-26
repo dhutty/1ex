@@ -1,0 +1,25 @@
+---
+on:
+  push:
+    branches: master
+jobs:
+  finger_farm:
+    runs-on: ubuntu-latest
+    env:
+      FINGER_FARM_URL: "https://finger.farm/api/${{github.actor}}/plan"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - id: plantext
+        run: echo ::set-output name=plantext::$(cat ./dotfiles/.plan)
+      - name: curl
+        uses: wei/curl@v1
+        with:
+          args: '-X PUT -d ''${{toJSON(format(''{{"token":"{0}","data":"{1}"}}'', secrets.FINGER_FARM_TOKEN, steps.plantext.outputs.plantext))}}''  -H ''Content-Type: application/json'' ${{env.FINGER_FARM_URL}}'
+
+# Requires that your github username and finger.farm username are the same. Otherwise modify FINGER_FARM_URL above.
+# Based on the example from https://finger.farm:
+# curl https://finger.farm/api/dhutty/plan -X PUT -H "Content-Type: application/json" -d '{"token":"MYTOKENHERE","data":"My new plan"}'
+
+# finger dhutty@finger.farm
+# https://finger.farm/dhutty
