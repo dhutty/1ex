@@ -1,0 +1,87 @@
+# vi: filetype=brewfile
+# No casks in this file, in order to not fail on linux
+tap "homebrew/core"
+tap "homebrew/services"
+
+brew "asciidoctor"
+brew "aspell"
+brew "bash"
+brew "bash-completion"
+# https://github.com/sharkdp/bat better than "cat"
+brew "bat"
+brew "curl"
+brew "exa"
+brew "fd"
+brew "gh"
+# github cli
+brew "git"
+brew "git-lfs"
+brew "git-extras"
+# gitlab cli
+brew "glab"
+brew "gnupg"
+brew "go"
+brew "gox"
+brew "htop"
+brew "httpie"
+brew "iftop"
+brew "jq"
+brew "links"
+brew "mosh"
+brew "mr"
+brew "pandoc"
+brew "pstree"
+brew "pv"
+brew "pwgen"
+brew "python"
+brew "pygments"
+brew "readline"
+brew "ripgrep"
+brew "rsync"
+brew "shellcheck"
+brew "shfmt"
+brew "socat"
+# https://github.com/mozilla/sops
+brew "sops"
+brew "sqlite"
+brew "ss"
+brew "sslscan"
+# https://starship.rs shell prompt
+brew "starship"
+brew "stunnel"
+brew "tmux"
+brew "tree"
+brew "vim"
+brew "wget"
+brew "yamllint"
+brew "yq"
+
+brew "pssh"
+brew "docker"
+brew "docker-compose"
+
+# Neovim
+brew "neovim"
+brew "lua"
+brew "luajit"
+brew "luarocks"
+brew "tree-sitter"
+
+
+# compression
+brew "pigz"
+brew "unrar"
+brew "xz"
+brew "zstd"
+
+# cheatsheet/reminders
+brew "eg-examples"
+brew "tldr"
+brew "howdoi"
+
+# pkg-config is a helper tool used when compiling applications and libraries.
+brew "pkg-config"
+
+# Viz
+brew "plantuml"
+brew "graphviz"

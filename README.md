@@ -13,6 +13,10 @@ scripts for helping deal with databases.
 
 ## dotfiles
 
+## Homebrew
+
+Package management for macOS and linux.
+
 ## testing
 
 ## vagrant

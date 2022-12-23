@@ -1,0 +1,19 @@
+# vi: filetype=brewfile
+# See also https://github.com/joelparkerhenderson/brewfile/blob/main/Brewfile
+# Multimedia tools
+brew "yt-dlp"
+
+# Mail tools
+
+brew "mairix"
+brew "notmuch"
+brew "offline-imap"
+
+# Publishing
+
+
+# bittorrent
+
+# Other
+brew "nb"                   # https://xwmx.github.io/nb note-taking
+brew "vifm"

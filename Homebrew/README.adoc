@@ -1,0 +1,30 @@
+= Declarative Package Management with Homebrew
+:created: 2022-12-22
+:modified: 2022-12-23 13:58
+ifdef::env-github,env-gitlab,env-browser[:relfilesuffix: .adoc]
+:swip-proj: some-work-in-progress
+:url-gitlab: https://gitlab.com/{swip-proj}
+:url-git-proj: {url-gitlab}/systems
+:url-swip: https://SomeWorkInProgress.org
+:toc: left
+
+link:https://homebrew-file.readthedocs.io[Homebrew-file]
+
+== Homebrew
+
+link:https://brew.sh[Homebrew] is a package manager for macOS and linux. There are some slight differences in how it works (and breaks) between macOS and linux and there are some packages that are only available on one or the other. System utilities, various CLIs, graphical applications, programming language toolchains/ecosystems and more.
+
+I use link:https://homebrew-file.readthedocs.io[Homebrew-file] and a set of files so that I can declaratively and automatically manage [most of] the software on these machines.
+
+Homebrew-file has functionality that allows additional files to be included, so I tend to use a 'common' Brewfile, plus OS-specific file(s), personal files, etc. See this link:./Brewfile[Brewfile] for the example.
+
+[source,shell]
+----
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install brew-file
+brew-file install -f ./Brewfile 
+----
+
+=== Brewfile Tips
+
+`before` and `after` can execute (non-Homebrew) commands.

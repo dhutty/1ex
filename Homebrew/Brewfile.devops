@@ -1,0 +1,35 @@
+# vi: filetype=brewfile
+
+# brew "ansible"
+# brew "ansible-lint"
+
+brew "awscli"
+brew "circleci"
+brew "s3cmd"
+
+brew "terraform"
+brew "terraform-docs"
+brew "terragrunt"
+brew "tfenv"
+brew "tflint"
+
+# Containers
+# brew "podman"
+# brew "podman-compose"
+# brew "lazydocker"
+
+# Kubernetes
+brew "kubernetes-cli"
+brew "helm"
+brew "kustomize"
+brew "kubectx"
+brew "k9s"
+# brew "skaffold"
+
+# pick one?
+# brew "kind"
+brew "k3sup"
+# brew "minikube"
+
+brew "nmap"
+brew "mtr"

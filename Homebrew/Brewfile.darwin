@@ -1,0 +1,52 @@
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "mas-cli/tap"
+
+brew "pinentry-mac"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+file "./Brewfile.gnu"
+
+cask "font-inconsolata-go-nerd-font"
+cask "google-chrome"
+cask "iterm2"
+cask "skim"
+cask "slack"
+cask "wireshark"
+cask "vlc"
+cask "zoomus"
+# https://github.com/exelban/stats task monitorin menubar
+cask "stats"
+# Diagrams: https://www.yworks.com/products/yed
+cask "yed"
+
+## Large or possibly unwanted Packages
+cask "mactex"
+# cask "handbrake"
+cask "iina"
+# cask "libreoffice"
+cask "thunderbird"
+# cask "skype"
+
+
+### Keyboard & Mouse
+# Network KVM Switch(Mouse and Keyboard Sharing)
+# cask 'synergy'
+# Customize various input devices on your Mac
+# cask 'bettertouchtool'
+# Know your short cuts
+cask 'cheatsheet'
+# A powerful and stable keyboard customizer for macOS
+# cask 'karabiner-elements'
+
+## Android
+# Android SDK Platform-Tools
+# cask 'android-platform-tools'
+# Android File Transfer
+# cask 'android-file-transfer'
+
+# https://github.com/mas-cli/mas
+brew "mas" if OS.mac?
+mas "The Unarchiver", id: 425424353
+

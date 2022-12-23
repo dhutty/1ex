@@ -1,0 +1,17 @@
+# vi: filetype=brewfile
+# Starting point for homebrew to use Brewfiles
+# See https://homebrew-file.readthedocs.io for more syntax/help.
+
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "rcmdnk/file"
+brew "brew-file"
+
+
+file "./Brewfile.common"
+file "./Brewfile.devops"
+# If present, include `Brewfile.darwin` or `Brewfile.linux`
+file "./Brewfile.$OSTYPE"
+
+# If present, include a personal Brewfile
+main "~/.config/Brewfile"

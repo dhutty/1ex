@@ -1,0 +1,5 @@
+brew update
+brew upgrade
+# `after` can execute commands so syntax for an OS update is:
+# after softwareupdate --download --all
+# after softwareupdate --install <some macOS update>
