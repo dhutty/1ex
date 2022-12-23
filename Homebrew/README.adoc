@@ -1,6 +1,6 @@
 = Declarative Package Management with Homebrew
 :created: 2022-12-22
-:modified: 2022-12-23 13:58
+:modified: 2022-12-23 14:04
 ifdef::env-github,env-gitlab,env-browser[:relfilesuffix: .adoc]
 :swip-proj: some-work-in-progress
 :url-gitlab: https://gitlab.com/{swip-proj}
@@ -9,6 +9,7 @@ ifdef::env-github,env-gitlab,env-browser[:relfilesuffix: .adoc]
 :toc: left
 
 link:https://homebrew-file.readthedocs.io[Homebrew-file]
+link:https://github.com/Homebrew/homebrew-bundle[brew bundle]
 
 == Homebrew
 

@@ -10,13 +10,13 @@ brew "s3cmd"
 brew "terraform"
 brew "terraform-docs"
 brew "terragrunt"
-brew "tfenv"
+# brew "tfenv"
 brew "tflint"
 
 # Containers
-# brew "podman"
-# brew "podman-compose"
-# brew "lazydocker"
+brew "podman"
+brew "podman-compose"
+brew "lazydocker"
 
 # Kubernetes
 brew "kubernetes-cli"

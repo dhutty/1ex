@@ -44,7 +44,6 @@ brew "socat"
 # https://github.com/mozilla/sops
 brew "sops"
 brew "sqlite"
-brew "ss"
 brew "sslscan"
 # https://starship.rs shell prompt
 brew "starship"
@@ -70,7 +69,7 @@ brew "tree-sitter"
 
 # compression
 brew "pigz"
-brew "unrar"
+brew "rar"
 brew "xz"
 brew "zstd"
 
