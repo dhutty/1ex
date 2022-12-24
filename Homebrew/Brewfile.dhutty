@@ -1,19 +1,63 @@
 # vi: filetype=brewfile
 # See also https://github.com/joelparkerhenderson/brewfile/blob/main/Brewfile
 # Multimedia tools
+brew "clangen/musikcube/musikcube"
 brew "yt-dlp"
+
+# Neovim
+brew "neovim"
+brew "lua"
+brew "luajit"
+brew "luarocks"
+brew "tree-sitter"
 
 # Mail tools
 
+brew "aerc"
 brew "mairix"
 brew "notmuch"
 brew "offline-imap"
+# Synchronize calendars and contacts https://github.com/pimutils/vdirsyncer
+brew "virdirsyncer"
 
 # Publishing
+github-markdown-toc
+marksman
+poppler
+# CLI epub reader
+epr
 
+## Tor
+# tor
+# torsocks
 
-# bittorrent
+## Torrent
 
-# Other
-brew "nb"                   # https://xwmx.github.io/nb note-taking
-brew "vifm"
+## Other
+# cli to manage shell history with sqlite https://github.com/jcsalterego/historian
+brew "historian"
+
+# note-taking: https://xwmx.github.io/nb
+brew "nb"
+
+# Terminal-based visual file manager https://www.midnight-commander.org/
+# brew "mc"
+
+# Terminal file explorer https://github.com/mgunyho/tere
+brew "tere"
+
+# Terminal file manager https://github.com/antonmedv/llama
+brew "llama"
+
+# Ncurses-based file manager with vi-like keybindings https://vifm.info/ brew "vifm"
+
+# HN TUI: https://github.com/bensadeh/circumflex
+brew "circumflex"
+
+# https://github.com/schachmat/wego weather tui
+brew "wego"
+
+# Minecraft package manager and launcher https://github.com/jakobkmar/pacmc
+# pacmc
+
+# ipfs

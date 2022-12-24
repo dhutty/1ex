@@ -5,6 +5,8 @@
 
 brew "awscli"
 brew "circleci"
+brew "doctl"
+brew "linode-cli"
 brew "s3cmd"
 
 brew "terraform"
@@ -14,9 +16,13 @@ brew "terragrunt"
 brew "tflint"
 
 # Containers
+brew "docker"
+brew "docker-compose"
+brew "lazydocker"
 brew "podman"
 brew "podman-compose"
-brew "lazydocker"
+# ContaiNERD CTL - Docker-compatible CLI for containerd https://github.com/containerd/nerdctl
+# nerdctl
 
 # Kubernetes
 brew "kubernetes-cli"
@@ -30,6 +36,17 @@ brew "k9s"
 # brew "kind"
 brew "k3sup"
 # brew "minikube"
+# brew "nomad"
 
+## Databases
+# Displays the differences between SQLite databases https://www.sqlite.org/sqldiff.html
+sqldiff
+
+## Golang
+brew "go"
+brew "gox"
+
+## Other
 brew "nmap"
 brew "mtr"
+# brew "pssh"

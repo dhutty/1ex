@@ -7,28 +7,29 @@ brew "asciidoctor"
 brew "aspell"
 brew "bash"
 brew "bash-completion"
-# https://github.com/sharkdp/bat better than "cat"
+# better than `cat`: https://github.com/sharkdp/bat
 brew "bat"
-brew "curl"
+# better than `df`: https://github.com/muesli/duf
+brew "duf"
+# better than `ls`: https://the.exa.website/
 brew "exa"
+# better than `find`: https://github.com/sharkdp/fd
 brew "fd"
+# github cli https://github.com/cli/cli
 brew "gh"
-# github cli
 brew "git"
 brew "git-lfs"
 brew "git-extras"
 # gitlab cli
 brew "glab"
 brew "gnupg"
-brew "go"
-brew "gox"
 brew "htop"
-brew "httpie"
 brew "iftop"
 brew "jq"
 brew "links"
 brew "mosh"
 brew "mr"
+brew "openssl"
 brew "pandoc"
 brew "pstree"
 brew "pv"
@@ -36,7 +37,7 @@ brew "pwgen"
 brew "python"
 brew "pygments"
 brew "readline"
-brew "ripgrep"
+brew "ripgrep-all"
 brew "rsync"
 brew "shellcheck"
 brew "shfmt"
@@ -52,20 +53,10 @@ brew "tmux"
 brew "tree"
 brew "vim"
 brew "wget"
+# Command-line XML and HTML beautifier and content extractor
+brew "xq"
 brew "yamllint"
 brew "yq"
-
-brew "pssh"
-brew "docker"
-brew "docker-compose"
-
-# Neovim
-brew "neovim"
-brew "lua"
-brew "luajit"
-brew "luarocks"
-brew "tree-sitter"
-
 
 # compression
 brew "pigz"
@@ -73,14 +64,31 @@ brew "rar"
 brew "xz"
 brew "zstd"
 
+# HTTP
+brew "curl"
+brew "httpie"
+brew "http-prompt"
+brew "httpx"
+
 # cheatsheet/reminders
 brew "eg-examples"
 brew "tldr"
 brew "howdoi"
 
 # pkg-config is a helper tool used when compiling applications and libraries.
-brew "pkg-config"
+# brew "pkg-config"
 
-# Viz
-brew "plantuml"
-brew "graphviz"
+# Diagrams/Visualization
+# brew "plantuml"
+# brew "graphviz"
+
+## Other
+
+# Handy way to save and run project-specific commands https://github.com/casey/just
+# brew "just"
+
+# Extremely fast tool to remove dupes and other lint from your filesystem https://github.com/sahib/rmlint
+# rmlint
+
+# Duplicate file finder and an enhanced fork of 'fdupes' https://github.com/jbruchon/jdupes
+# jdupes
