@@ -15,7 +15,7 @@ scripts for helping deal with databases.
 
 ## Homebrew
 
-Package management for macOS and linux.
+Declarative package management for macOS and linux using homebrew and [brewfiles](./Homebrew).
 
 ## testing
 
