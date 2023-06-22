@@ -162,7 +162,7 @@ locals {
     log "Creating account.hcl"
     echo "${ACCOUNT_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/account.hcl"
     log "Creating region.hcl"
-    echo "${REGION_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/region.hcl"
+    [[ "${REGION}" != "_global" ]] && echo "${REGION_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/region.hcl"
     log "Creating terragrunt.hcl files"
     echo "${TG_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/infra/terragrunt.hcl"
     echo "${TG_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/app/terragrunt.hcl"
