@@ -25,6 +25,8 @@ verbosity=0
 print_usage() {
     echo "${SUMMARY}"; echo ""
     echo "Usage: $PROGNAME [options] [<args>]"
+    echo "-a <account_id> specifies the (AWS?) account ID, defaulting to a dummy ID"
+    echo "-o <dir> specifies the output directory, default ."
     echo ""
 
     echo "-f force"
@@ -39,9 +41,12 @@ print_help() {
         print_usage
 }
 
-while getopts "hvfVo:" OPTION;
+ACCT=1234567890
+while getopts "hvfVo:a:" OPTION;
 do
   case "$OPTION" in
+    a)  ACCT=${OPTARG}
+        ;;
     o)  OUT_DIR=${OPTARG}
         ;;
     h)
@@ -84,7 +89,6 @@ OUT_DIR=${OUT_DIR:-${DEFAULT_OUT_DIR}}
 ENVS=${ENVS:-${DEFAULT_ENVS[@]}}
 REGIONS=${REGIONS:-${DEFAULT_REGIONS[@]}}
 PROVIDERS=${PROVIDERS:-${DEFAULT_PROVIDERS[@]}}
-ACCT=1234567890
 
 log "Scaffold Terragrunt to ${OUT_DIR}"
 
@@ -125,6 +129,10 @@ include \"region_config\" {
 # }
 
 locals {
+  environment     = include.environment_config.locals.environment
+  account_id      = include.account_config.locals.account_id
+  account_name    = include.account_config.locals.account_name
+  aws_region      = include.region_config.locals.aws_region
 }
 
 inputs = {}
@@ -139,6 +147,7 @@ locals {
 }
 "
   mkdir -p "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/"
+  log "Creating environment.hcl"
   echo "$ENVIRONMENT_STANZA" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/environment.hcl"
   for REGION in ${REGIONS[@]}; do
 
@@ -150,8 +159,11 @@ locals {
 
     mkdir -p "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/infra"
     mkdir -p "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/app"
+    log "Creating account.hcl"
     echo "${ACCOUNT_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/account.hcl"
+    log "Creating region.hcl"
     echo "${REGION_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/region.hcl"
+    log "Creating terragrunt.hcl files"
     echo "${TG_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/infra/terragrunt.hcl"
     echo "${TG_STANZA}" > "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}/app/terragrunt.hcl"
     for PROVIDER in ${PROVIDERS[@]}; do
@@ -164,11 +176,14 @@ generate \"${PROVIDER}_provider\" {
 provider \"${PROVIDER}\" {
 
 }
-EOF"
-
+EOF
+}"
+      log "Appending provider fragments"
       echo "${PROVIDER_STANZA}" >> "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}"/infra/terragrunt.hcl
       echo "${PROVIDER_STANZA}" >> "${OUT_DIR}/terragrunt/${ACCT}/${ENV}/${REGION}"/app/terragrunt.hcl
     done
   done
 done
+
+command -v terragrunt && (log "formatting HCL" && cd "${OUT_DIR}" && terragrunt hclfmt)
 tree "${OUT_DIR}"
